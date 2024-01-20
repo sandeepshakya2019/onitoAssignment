@@ -10,7 +10,6 @@ function App() {
   return (
     <div>
       {fromStep === 0 && <PersonalDetailsForm />}
-
       {fromStep === 1 && <AddressDetailsForm />}
       <div>
         <ReactDataTables columns={columns} />
