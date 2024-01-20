@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import PersonalDetailsForm from "./Components/Forms/PersonalDetailsForm.js";
+import AddressDetailsForm from "./Components/Forms/AddressDetailsForm.js.js";
+import ReactDataTables from "./Components/Table/ReactDataTables.js";
+import { columns } from "./Components/Table/constant.js";
+import { useSelector } from "react-redux";
 
 function App() {
+  const { fromStep } = useSelector((state) => state.formDetails);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {fromStep === 0 && <PersonalDetailsForm />}
+
+      {fromStep === 1 && <AddressDetailsForm />}
+      <div>
+        <ReactDataTables columns={columns} />
+      </div>
     </div>
   );
 }
